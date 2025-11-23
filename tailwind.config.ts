@@ -2,34 +2,34 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#7C3AED',
-          dark: '#6D28D9',
-          light: '#8B5CF6',
+          DEFAULT: '#7c3aed',
+          dark: '#6d28d9',
+          light: '#8b5cf6',
         },
         background: {
-          DEFAULT: '#0F0F1A',
-          secondary: '#1A1A2E',
+          DEFAULT: '#0f0f1a',
+          secondary: '#1a1a2e',
         },
         text: {
-          primary: '#FFFFFF',
-          secondary: '#94A3B8',
-          muted: '#64748B',
+          primary: '#ffffff',
+          secondary: '#94a3b8',
+          muted: '#64748b',
         },
         accent: {
-          green: '#10B981',
-          cyan: '#06B6D4',
+          green: '#10b981',
+          cyan: '#06b6d4',
         },
       },
       fontFamily: {
-        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
