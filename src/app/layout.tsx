@@ -49,6 +49,11 @@ const circularStd = localFont({
       weight: '700',
       style: 'normal',
     },
+    {
+      path: '../../public/fonts/circular-std/circular-std-bold.ttf',
+      weight: '800',
+      style: 'normal',
+    }
   ],
 });
 
