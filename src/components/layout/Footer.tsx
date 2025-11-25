@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { APP_NAME, CONTACT_EMAIL } from '@/lib/constants'
+import Image from 'next/image'
+import { Twitter, Instagram, Linkedin, Github } from 'lucide-react'
 
 const footerLinks = {
   product: [
@@ -12,7 +13,7 @@ const footerLinks = {
     { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
     { name: 'Careers', href: '/careers' },
-    { name: 'Contact', href: `mailto:${CONTACT_EMAIL}` },
+    { name: 'Contact', href: '/contact' },
   ],
   legal: [
     { name: 'Privacy Policy', href: '/privacy' },
@@ -20,36 +21,65 @@ const footerLinks = {
   ],
 }
 
+const socialLinks = [
+  { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/requrhq' },
+  { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/requrhq' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/requrhq' },
+  { name: 'GitHub', icon: Github, href: 'https://github.com/requr-hq' },
+]
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-white/10 bg-background">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <footer className="bg-[#0F1117] border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand Section */}
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center">
-                <span className="text-white font-bold text-lg">R</span>
-              </div>
-              <span className="text-xl font-bold text-white">{APP_NAME}</span>
-            </div>
-            <p className="text-text-secondary text-sm leading-relaxed">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
+          {/* Brand Section - Takes 2 columns */}
+          <div className="md:col-span-2">
+            <Link href="/" className="flex items-center mb-4">
+              <Image
+                src="/images/requr-logo.svg"
+                alt="Requr Logo"
+                width={150}
+                height={40}
+                className="h-10 w-auto object-contain"
+              />
+            </Link>
+            <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-6">
               The smart way to manage all your subscriptions in one place. Save money and time.
             </p>
+            
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social) => {
+                const Icon = social.icon
+                return (
+                  <Link
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors group"
+                    aria-label={social.name}
+                  >
+                    <Icon className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
+                  </Link>
+                )
+              })}
+            </div>
           </div>
 
           {/* Product Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Product</h3>
+            <h3 className="text-white font-semibold mb-4 text-sm">Product</h3>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary hover:text-white transition-colors text-sm"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -60,13 +90,13 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Company</h3>
+            <h3 className="text-white font-semibold mb-4 text-sm">Company</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary hover:text-white transition-colors text-sm"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -77,13 +107,13 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Legal</h3>
+            <h3 className="text-white font-semibold mb-4 text-sm">Legal</h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary hover:text-white transition-colors text-sm"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -94,15 +124,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10">
+        <div className="pt-8 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-text-muted text-sm">
-              © {currentYear} {APP_NAME} Inc. All rights reserved.
+            <p className="text-white/40 text-sm">
+              © {currentYear} Requr Inc. All rights reserved.
             </p>
 
-            <div className="flex items-center gap-6">
-              <p className="text-text-secondary text-sm">Follow us on social media</p>
-            </div>
+            <p className="text-white/40 text-sm">
+              Follow us on social media
+            </p>
           </div>
         </div>
       </div>

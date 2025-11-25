@@ -38,7 +38,17 @@ const mabryPro = localFont({
       weight: '300',
       style: 'normal',
     },
+  ],
+});
 
+const circularStd = localFont({
+  variable: '--font-circular',
+  src: [
+    {
+      path: '../../public/fonts/circular-std/circular-std-medium.ttf',
+      weight: '700',
+      style: 'normal',
+    },
   ],
 });
 
@@ -61,7 +71,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico?v=3" />
         <link rel="apple-touch-icon" href="/favicon.ico?v=3" />
       </head>
-      <body className={`${karla.variable} ${mabryPro.variable} antialiased`}>
+      <body className={`${karla.variable} ${mabryPro.variable} ${circularStd.variable} antialiased`}>
         <Navbar />
         {children}
         <Footer />

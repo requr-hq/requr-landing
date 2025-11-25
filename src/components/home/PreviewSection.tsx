@@ -1,72 +1,55 @@
-import Button from '@/components/ui/Button'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function PreviewSection() {
   return (
-    <section className="py-32 px-6">
+    <section className="py-32 px-6 bg-[#7B85A8]">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Preview your{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-cyan">
-                subscriptions
-              </span>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
+              Preview your
               <br />
-              all in one place
+              subscriptions
+              <br />
+              <span className="text-white/50">all in one place</span>
             </h2>
-            <p className="text-text-secondary text-lg mb-8 leading-relaxed">
-              Get a clear overview of your monthly spending. See all your subscriptions, track renewal dates, and identify services you no longer use.
-            </p>
-            <Button variant="secondary" size="lg">
-              <Link href="/join">Join our waitlist</Link>
-            </Button>
+            
+            <Link href="/join" className="inline-block mt-8">
+              <button className="bg-black hover:bg-black/90 text-white px-10 py-4 rounded-lg text-base font-medium transition-colors">
+                Join our waitlist
+              </button>
+            </Link>
           </div>
 
-          {/* Right Content - Mock Dashboard */}
-          <div className="relative">
-            <div className="bg-background-secondary rounded-2xl p-6 border border-white/10 shadow-2xl">
-              {/* Dashboard Header */}
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-text-muted text-sm">Total Monthly Spend</span>
-                  <span className="text-accent-green text-sm font-semibold">+12%</span>
-                </div>
-                <div className="text-4xl font-bold text-white">$142.90</div>
-              </div>
-
-              {/* Mock Subscription Cards */}
-              <div className="space-y-3">
-                {[
-                  { name: 'Netflix Premium', price: '$19.99', color: '#E50914', renewal: '2 days' },
-                  { name: 'Spotify Duo', price: '$14.99', color: '#1DB954', renewal: '5 days' },
-                  { name: 'Adobe Creative Cloud', price: '$54.99', color: '#FF0000', renewal: '12 days' },
-                ].map((sub) => (
-                  <div
-                    key={sub.name}
-                    className="flex items-center justify-between p-4 bg-background rounded-xl border border-white/5 hover:border-white/10 transition-colors"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center"
-                        style={{ backgroundColor: sub.color }}
-                      >
-                        <span className="text-white text-lg">📺</span>
-                      </div>
-                      <div>
-                        <div className="text-white font-semibold text-sm">{sub.name}</div>
-                        <div className="text-text-muted text-xs">Renew in {sub.renewal}</div>
-                      </div>
+          {/* Right Content - Phone Mockup */}
+          <div className="relative flex justify-center md:justify-end">
+            {/* Phone Frame */}
+            <div className="relative w-[380px] h-[620px]">
+              {/* Outer border (black) */}
+              <div className="absolute inset-0 bg-black rounded-[48px] p-[3px]">
+                {/* Inner border layer */}
+                <div className="w-full h-full bg-[#8A94B5] rounded-[45px] p-[2px]">
+                  {/* Phone screen */}
+                  <div className="w-full h-full bg-[#8A94B5] rounded-[43px] overflow-hidden">
+                    {/* You can add your app screenshot here */}
+                    <div className="w-full h-full flex items-center justify-center">
+                      {/* Placeholder for app screenshot */}
+                      {/* <Image 
+                        src="/images/app-preview.png" 
+                        alt="App Preview"
+                        fill
+                        className="object-cover"
+                      /> */}
                     </div>
-                    <div className="text-white font-semibold">{sub.price}</div>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
 
-            {/* Decorative blur */}
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-[100px] -z-10" />
+              {/* Notch */}
+              <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[140px] h-[28px] bg-black rounded-b-[20px] z-10" />
+            </div>
           </div>
         </div>
       </div>

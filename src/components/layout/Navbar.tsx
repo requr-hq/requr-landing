@@ -4,12 +4,9 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 import { cn } from '@/lib/utils'
-import { NAV_LINKS } from '@/lib/constants'
-import Button from '@/components/ui/Button'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,85 +26,26 @@ export default function Navbar() {
           : 'bg-transparent'
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-        <Link href="/" className="flex items-center z-60">
-          <Image 
-            src="/images/logo.svg" 
-            alt="Melon" 
-            width={131} 
-            height={25} 
-            className="w-auto h-5 sm:h-6 filter brightness-0 invert" 
-          />
-        </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-text-secondary hover:text-white transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/requr-logo.svg"
+              alt="Requr Logo"
+              width={150}
+              height={40}
+              className="h-10 w-auto object-contain"
+            />
+          </Link>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
-            <Link href="/join" className="no-underline">
-              <Button variant="primary" size="md">Join Waitlist</Button>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white p-2"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {mobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+          <Link href="/join" className="no-underline">
+            <button className="text-white text-sm font-medium hover:opacity-80 transition-opacity">
+              Join our waitlist
+            </button>
+          </Link>
         </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-white/10">
-            <div className="flex flex-col gap-4">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-text-secondary hover:text-white transition-colors py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <Link href="/join" onClick={() => setMobileMenuOpen(false)} className="w-full mt-2 no-underline">
-                <Button variant="primary" size="md" className="w-full">
-                  Join Waitlist
-                </Button>
-              </Link>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   )
