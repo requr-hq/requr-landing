@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { APP_NAME, CONTACT_EMAIL } from '@/src/lib/constants'
+import { APP_NAME, CONTACT_EMAIL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: `Privacy Policy - ${APP_NAME}`,

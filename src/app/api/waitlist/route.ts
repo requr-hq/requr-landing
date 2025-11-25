@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { isValidEmail } from '@/src/lib/utils'
-import type { WaitlistResponse } from '@/src/types'
+import { isValidEmail } from '@/lib/utils'
+import type { WaitlistResponse } from '@/types'
 
 export async function POST(request: NextRequest) {
   try {
